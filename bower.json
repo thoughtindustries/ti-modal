@@ -1,11 +1,12 @@
 {
   "name": "ti-modal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bootstrap-styled modals for Ember.js",
   "main": [ "main.js" ],
   "dependencies": {
     "handlebars": "^1.0",
-    "ember": "^1.0"
+    "ember": "^1.0",
+    "ember-resolver": "git://github.com/stefanpenner/ember-jj-abrams-resolver.git#9805033c178e7f857f801359664adb599444b430"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,12 @@
   "author": "Chris McC",
   "license": "MIT",
   "ignore": [
+    "bower_components",
+    "bower.json",
+    "Gulpfile.js",
+    "package.json",
+    "test",
+    "lib",
     "node_modules",
     "Makefile"
   ]

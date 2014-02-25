@@ -4,7 +4,7 @@ Bootstrap-styled modals for Ember.js. Includes header & button support.
 
 Assumes you are using [ember-app-kit](https://github.com/stefanpenner/ember-app-kit) (more specifically [ember-jj-abrams-resolver](https://github.com/stefanpenner/ember-jj-abrams-resolver))
 
-## Usage
+## Installation
 
 Import the initializer before you create your app, e.g.
 
@@ -27,6 +27,8 @@ Add the open and close actions to your Application Route:
     ... your application-level actions here ...
   });
 ```
+
+## Usage
 
 Create a Modal Controller with:
 

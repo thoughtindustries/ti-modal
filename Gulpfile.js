@@ -13,7 +13,7 @@ gulp.task('scripts', function() {
       .pipe(es6ModuleTranspiler({type: 'amd', moduleName: 'ti-modal'})),
     gulp.src(['./lib/initializer.js'])
       .pipe(es6ModuleTranspiler({type: 'amd', moduleName: 'ti-modal/initializer'}))
-  ).pipe(concat('dist.js')).pipe(gulp.dest('.'));
+  ).pipe(concat('ti-modal.js')).pipe(gulp.dest('./dist'));
 });
 
 gulp.task('default', ['scripts']);
