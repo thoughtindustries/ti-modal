@@ -1,0 +1,26 @@
+{
+  "name": "ti-modal",
+  "version": "1.0.0",
+  "description": "Bootstrap-styled modals for Ember.js",
+  "main": [ "main.js" ],
+  "dependencies": {
+    "handlebars": "^1.0",
+    "ember": "^1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thoughtindustries/ti-modal.git"
+  },
+  "keywords": [
+    "bootstrap",
+    "ember",
+    "emberjs",
+    "modal"
+  ],
+  "author": "Chris McC",
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "Makefile"
+  ]
+}

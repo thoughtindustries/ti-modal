@@ -1,0 +1,35 @@
+<div class="modal fade in" style="display: block" {{action "close"}}>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      {{#if header}}
+        <div class="modal-header">
+          <h4 class="modal-title">
+            {{header}}
+            <button class="close" type="button" {{action "close"}}>&times;</button>
+          </h4>
+        </div>
+      {{/if}}
+
+      <div {{action bubbles=false}}>
+        {{#if submit}}
+          <form class="form-horizontal" {{action "sendAction" submit}}>
+            <div class="modal-body">
+              {{yield}}
+            </div>
+          </form>
+        {{else}}
+          <div class="modal-body">
+            {{yield}}
+          </div>
+        {{/if}}
+      </div>
+
+      <div class="modal-footer">
+        {{#each buttons}}
+          <button {{bind-attr class=":btn className"}} {{action "sendAction" action}}>{{label}}</button>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop in"></div>
