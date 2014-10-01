@@ -5,7 +5,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
-  
+
   var buffer = '', stack1;
   data.buffer.push("\n        <div class=\"modal-header\">\n          <h4 class=\"modal-title\">\n            ");
   stack1 = helpers._triageMustache.call(depth0, "header", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
@@ -17,7 +17,7 @@ function program1(depth0,data) {
   }
 
 function program3(depth0,data) {
-  
+
   var buffer = '', stack1;
   data.buffer.push("\n          <form class=\"form-horizontal\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "sendAction", "submit", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
@@ -29,7 +29,7 @@ function program3(depth0,data) {
   }
 
 function program5(depth0,data) {
-  
+
   var buffer = '', stack1;
   data.buffer.push("\n          <div class=\"modal-body\">\n            ");
   stack1 = helpers._triageMustache.call(depth0, "yield", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
@@ -39,7 +39,7 @@ function program5(depth0,data) {
   }
 
 function program7(depth0,data) {
-  
+
   var buffer = '', stack1;
   data.buffer.push("\n          <button ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
@@ -54,9 +54,7 @@ function program7(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("<div class=\"modal fade in\" style=\"display: block\" ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "close", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      ");
+  data.buffer.push("<div class=\"modal fade in\" style=\"display: block\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      ");
   stack1 = helpers['if'].call(depth0, "header", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n\n      <div ");
@@ -71,9 +69,9 @@ function program7(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"modal-backdrop in\"></div>\n");
   return buffer;
-  
+
 }); });
-define("ti-modal", 
+define("ti-modal",
   ["exports"],
   function(__exports__) {
     "use strict";
@@ -125,7 +123,7 @@ define("ti-modal",
     __exports__.ModalController = ModalController;
     __exports__.ModalComponent = ModalComponent;
   });
-define("ti-modal/initializer", 
+define("ti-modal/initializer",
   ["templates/ti-modal","ti-modal","exports"],
   function(__dependency1__, __dependency2__, __exports__) {
     "use strict";
