@@ -1,7 +1,7 @@
 {
   "name": "ti-modal",
   "description": "Bootstrap-styled modals for Ember.js",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": true,
   "author": "Chris McC",
   "license": "MIT",
@@ -10,10 +10,10 @@
     "url": "git://github.com/thoughtindustries/ti-modal.git"
   },
   "devDependencies": {
-    "event-stream": "^3.1.0",
-    "gulp": "^3.5.2",
-    "gulp-concat": "^2.1.7",
-    "gulp-ember-handlebars": "^0.6.0",
-    "gulp-es6-module-transpiler": "^0.1.0"
+    "event-stream": "3.1.0",
+    "gulp": "3.5.2",
+    "gulp-concat": "2.1.7",
+    "gulp-ember-handlebars": "0.6.0",
+    "gulp-es6-module-transpiler": "0.1.0"
   }
 }
