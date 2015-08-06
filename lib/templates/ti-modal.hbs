@@ -1,6 +1,6 @@
 <div {{action "close"}} class="modal fade in" style="display: block">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content" {{action bubbles=false}}>
       {{#if header}}
         <div class="modal-header">
           <h4 class="modal-title">
@@ -10,7 +10,7 @@
         </div>
       {{/if}}
 
-      <div {{action bubbles=false}}>
+      <div>
         {{#if submit}}
           <form class="form-horizontal" {{action "sendAction" submit}}>
             <div class="modal-body">
