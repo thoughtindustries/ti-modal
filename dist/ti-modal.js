@@ -56,7 +56,7 @@ function program7(depth0,data) {
 
   data.buffer.push("<div ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "close", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(" class=\"modal fade in\" style=\"display: block\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\" ");
+  data.buffer.push(" class=\"modal fade in\" style=\"display: block\">\n  <div class=\"modal-dialog\" role=\"dialog\">\n    <div class=\"modal-content\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, {hash:{
     'bubbles': (false)
   },hashTypes:{'bubbles': "BOOLEAN"},hashContexts:{'bubbles': depth0},contexts:[],types:[],data:data})));
