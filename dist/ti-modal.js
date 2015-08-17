@@ -10,9 +10,9 @@ function program1(depth0,data) {
   data.buffer.push("\n        <div class=\"modal-header\">\n          <h4 class=\"modal-title\">\n            ");
   stack1 = helpers._triageMustache.call(depth0, "header", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\n            <button class=\"close\" type=\"button\" ");
+  data.buffer.push("\n          </h4>\n          <button class=\"close\" type=\"button\" aria-label=\"close\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "close", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(">&times;</button>\n          </h4>\n        </div>\n      ");
+  data.buffer.push(">&times;</button>\n        </div>\n      ");
   return buffer;
   }
 
@@ -73,27 +73,6 @@ function program7(depth0,data) {
   return buffer;
   
 }); });
-define("ti-modal/initializer", 
-  ["templates/ti-modal","ti-modal","exports"],
-  function(__dependency1__, __dependency2__, __exports__) {
-    "use strict";
-    var Template = __dependency1__["default"];
-
-    var ModalComponent = __dependency2__.ModalComponent;
-    var ModalController = __dependency2__.ModalController;
-
-    __exports__["default"] = Ember.onLoad('Ember.Application', function(application) {
-      application.initializer({
-        name: 'ti-modal',
-
-        initialize: function(container, application) {
-          container.register('template:components/ti-modal', Template);
-          container.register('component:ti-modal', ModalComponent);
-          container.register('controller:ti-modal', ModalController);
-        }
-      });
-    });
-  });
 define("ti-modal", 
   ["exports"],
   function(__exports__) {
@@ -157,4 +136,25 @@ define("ti-modal",
     __exports__.ModalRoutingMixin = ModalRoutingMixin;
     __exports__.ModalController = ModalController;
     __exports__.ModalComponent = ModalComponent;
+  });
+define("ti-modal/initializer", 
+  ["templates/ti-modal","ti-modal","exports"],
+  function(__dependency1__, __dependency2__, __exports__) {
+    "use strict";
+    var Template = __dependency1__["default"];
+
+    var ModalComponent = __dependency2__.ModalComponent;
+    var ModalController = __dependency2__.ModalController;
+
+    __exports__["default"] = Ember.onLoad('Ember.Application', function(application) {
+      application.initializer({
+        name: 'ti-modal',
+
+        initialize: function(container, application) {
+          container.register('template:components/ti-modal', Template);
+          container.register('component:ti-modal', ModalComponent);
+          container.register('controller:ti-modal', ModalController);
+        }
+      });
+    });
   });
