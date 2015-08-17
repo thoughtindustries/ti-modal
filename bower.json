@@ -1,6 +1,6 @@
 {
   "name": "ti-modal",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Bootstrap-styled modals for Ember.js",
   "main": [ "main.js" ],
   "dependencies": {
