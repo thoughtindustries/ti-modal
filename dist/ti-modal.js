@@ -5,7 +5,7 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
-  
+
   var buffer = '', stack1;
   data.buffer.push("\n        <div class=\"modal-header\">\n          <h4 class=\"modal-title\">\n            ");
   stack1 = helpers._triageMustache.call(depth0, "header", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
@@ -17,7 +17,7 @@ function program1(depth0,data) {
   }
 
 function program3(depth0,data) {
-  
+
   var buffer = '', stack1;
   data.buffer.push("\n          <form class=\"form-horizontal\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "sendAction", "submit", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
@@ -29,7 +29,7 @@ function program3(depth0,data) {
   }
 
 function program5(depth0,data) {
-  
+
   var buffer = '', stack1;
   data.buffer.push("\n          <div class=\"modal-body\">\n            ");
   stack1 = helpers._triageMustache.call(depth0, "yield", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
@@ -39,7 +39,7 @@ function program5(depth0,data) {
   }
 
 function program7(depth0,data) {
-  
+
   var buffer = '', stack1;
   data.buffer.push("\n          <button ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
@@ -54,13 +54,7 @@ function program7(depth0,data) {
   return buffer;
   }
 
-  data.buffer.push("<div ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "close", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
-  data.buffer.push(" class=\"modal fade in\" style=\"display: block\">\n  <div class=\"modal-dialog\" role=\"dialog\">\n    <div class=\"modal-content\" ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, {hash:{
-    'bubbles': (false)
-  },hashTypes:{'bubbles': "BOOLEAN"},hashContexts:{'bubbles': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\n      ");
+  data.buffer.push("<div class=\"modal fade in\" style=\"display: block\">\n  <div class=\"modal-dialog\" role=\"dialog\">\n    <div class=\"modal-content\">\n      ");
   stack1 = helpers['if'].call(depth0, "header", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n\n      <div>\n        ");
@@ -71,13 +65,36 @@ function program7(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"modal-backdrop in\"></div>\n");
   return buffer;
-  
+
 }); });
-define("ti-modal", 
+define("ti-modal/initializer",
+  ["templates/ti-modal","ti-modal","exports"],
+  function(__dependency1__, __dependency2__, __exports__) {
+    "use strict";
+    var Template = __dependency1__["default"];
+
+    var ModalComponent = __dependency2__.ModalComponent;
+    var ModalController = __dependency2__.ModalController;
+    var ModalView = __dependency2__.ModalView;
+
+    __exports__["default"] = Ember.onLoad('Ember.Application', function(application) {
+      application.initializer({
+        name: 'ti-modal',
+
+        initialize: function(container, application) {
+          container.register('template:components/ti-modal', Template);
+          container.register('component:ti-modal', ModalComponent);
+          container.register('controller:ti-modal', ModalController);
+          container.register('view:ti-modal', ModalView);
+        }
+      });
+    });
+  });
+define("ti-modal",
   ["exports"],
   function(__exports__) {
     "use strict";
-    var ModalController, ModalComponent, ModalRoutingMixin;
+    var ModalController, ModalComponent, ModalRoutingMixin, ModalView;
 
     ModalRoutingMixin = Ember.Mixin.create({
       actions: {
@@ -85,6 +102,7 @@ define("ti-modal",
           this.controllerFor(modalName).set('model',model);
           return this.render(modalName, {
             into: 'application',
+            view: 'ti-modal',
             outlet: 'modal'
           });
         },
@@ -110,18 +128,6 @@ define("ti-modal",
     });
 
     ModalComponent = Ember.Component.extend({
-      bindClosingBehavior: function() {
-        $(document).on('keyup.modal', $.proxy(function(e) {
-          if (e.keyCode == 27) {
-            this.sendAction('close')
-          }
-        }, this));
-      }.on('didInsertElement'),
-
-      unbindClosingBehavior: function() {
-        $(document).off('keyup.modal')
-      }.on('willDestroyElement'),    
-
       actions: {
         close: function() {
           return this.sendAction('close');
@@ -133,28 +139,30 @@ define("ti-modal",
       }
     });
 
+    ModalView = Ember.View.extend({
+      bindClosingBehavior: function() {
+        // close if the user hits escape
+        $(document).on('keyup.modal', $.proxy(function(e) {
+          if (e.keyCode == 27) {
+            this.get('controller').send('close');
+          }
+        }, this));
+      }.on('didInsertElement'),
+
+      unbindClosingBehavior: function() {
+        $(document).off('keyup.modal')
+      }.on('willDestroyElement'),
+
+      click: function(e) {
+        // close when the user clicks on the outside of the modal
+        if ($(e.target).hasClass('modal')) {
+          this.get('controller').send('close');
+        }
+      }
+    });
+
     __exports__.ModalRoutingMixin = ModalRoutingMixin;
     __exports__.ModalController = ModalController;
     __exports__.ModalComponent = ModalComponent;
-  });
-define("ti-modal/initializer", 
-  ["templates/ti-modal","ti-modal","exports"],
-  function(__dependency1__, __dependency2__, __exports__) {
-    "use strict";
-    var Template = __dependency1__["default"];
-
-    var ModalComponent = __dependency2__.ModalComponent;
-    var ModalController = __dependency2__.ModalController;
-
-    __exports__["default"] = Ember.onLoad('Ember.Application', function(application) {
-      application.initializer({
-        name: 'ti-modal',
-
-        initialize: function(container, application) {
-          container.register('template:components/ti-modal', Template);
-          container.register('component:ti-modal', ModalComponent);
-          container.register('controller:ti-modal', ModalController);
-        }
-      });
-    });
+    __exports__.ModalView = ModalView;
   });
